@@ -1,10 +1,8 @@
 #!/bin/bash
-
-if [[ $(uname) == Darwin ]]; then
-  PKG_LIBS="-L${PREFIX}/lib" $R CMD INSTALL --build .
+if [[ $target_platform =~ linux.* ]] || [[ $target_platform == win-32 ]] || [[ $target_platform == win-64 ]] || [[ $target_platform == osx-64 ]]; then
+  export DISABLE_AUTOBREW=1
+  $R CMD INSTALL --build .
 else
-  # .. on Linux the situation is even worse:
-  LD_LIBRARY_PATH=${PREFIX}/lib/R/lib:${PREFIX}/lib \
-  PKG_LIBS="-L${PREFIX}/lib -L${PREFIX}/lib/R/lib -lR -lRblas" \
-    $R CMD INSTALL --build .
+  mkdir -p $PREFIX/lib/R/library/Rserve
+  mv * $PREFIX/lib/R/library/Rserve
 fi
