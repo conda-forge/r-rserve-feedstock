@@ -12,12 +12,9 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/Rserve_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/Rserve/Rserve_{{ version }}.tar.gz
-
-
   sha256: f6d636c736c3f16487d9987e54554fe0c55257b9bc0671b43e536d832e513027
 
 build:
-  merge_build_host: True  # [win]
   merge_build_host: True  # [win]
   number: 1001
   rpaths:
@@ -31,14 +28,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-  host:
     - r-base
     - libiconv             # [osx]
-
   run:
     - r-base
     - libiconv             # [osx]
@@ -47,8 +38,6 @@ test:
   commands:
     - $R -e "library('Rserve')"  # [not win]
     - "\"%R%\" -e \"library('Rserve')\""  # [win]
-
-
 
 about:
   home: http://www.rforge.net/Rserve/
@@ -61,8 +50,6 @@ about:
     A simple R client is included in this package as well.
   license_family: GPL2
   license_file: LICENSE
-
-
 
 extra:
   recipe-maintainers:
