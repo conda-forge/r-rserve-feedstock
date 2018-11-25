@@ -16,7 +16,6 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  merge_build_host: True  # [win]
   number: 1001
   rpaths:
     - lib/R/lib/
@@ -26,9 +25,6 @@ requirements:
   build:
     - posix                # [win]
     - make
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
     - {{ compiler('cxx') }}        # [unix]
