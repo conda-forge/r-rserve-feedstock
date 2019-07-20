@@ -25,11 +25,11 @@ requirements:
   build:
     - posix                # [win]
     - make
-    - {{ compiler('c') }}        # [not win and c_compiler != "clang"]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [not win and c_compiler != "clang"]
+    - {{ compiler('c') }}  # [unix]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [unix]
     - {{ compiler('m2w64_cxx') }}  # [win]
-    - llvm-openmp                # [not win and c_compiler == "clang"]
+    - llvm-openmp          # [osx] 
   host:
     - r-base
     - libiconv             # [osx]
