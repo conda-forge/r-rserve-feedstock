@@ -56,4 +56,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - croth1
