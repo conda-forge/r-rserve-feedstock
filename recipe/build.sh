@@ -5,6 +5,6 @@ if [[ $(uname) == Darwin ]]; then
 else
   # .. on Linux the situation is even worse:
   LD_LIBRARY_PATH=${PREFIX}/lib/R/lib:${PREFIX}/lib \
-  PKG_LIBS="-L${PREFIX}/lib -L${PREFIX}/lib/R/lib -lR -lRblas" \
+  PKG_LIBS="-L${PREFIX}/lib -L${PREFIX}/lib/R/lib -lR -Wl,-rpath-link,${PREFIX}/lib -lblas" \
     $R CMD INSTALL --build . 
 fi
