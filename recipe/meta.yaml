@@ -1,5 +1,4 @@
-{% set version = '1.7-3' %}
-
+{% set version = '1.7-3.1' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,40 +7,47 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: Rserve_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/Rserve_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/Rserve/Rserve_{{ version }}.tar.gz
-  sha256: f6d636c736c3f16487d9987e54554fe0c55257b9bc0671b43e536d832e513027
+    - {{ cran_mirror }}/src/contrib/Rserve_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/Rserve/Rserve_{{ version }}.tar.gz
+  sha256: 3ba1e919706e16a8632def5f45d666b6e44eafa6c14b57064d6ddf3415038f99
 
 build:
   merge_build_host: True  # [win]
-  number: 1002
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - make
-    - {{ compiler('c') }}        # [not win and c_compiler != "clang"]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [not win and c_compiler != "clang"]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-    - llvm-openmp                # [not win and c_compiler == "clang"]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - libiconv             # [osx]
-    - libblas              # [linux]
+    - libiconv                   # [osx]
+    - libblas                    # [linux]
   run:
     - r-base
-    - libiconv             # [osx]
-    - libblas              # [linux]
+    - {{native}}gcc-libs         # [win]
+    - libiconv                   # [osx]
+    - libblas                    # [linux]
 
 test:
   commands:
-    - $R -e "library('Rserve')"  # [not win]
+    - $R -e "library('Rserve')"           # [not win]
     - "\"%R%\" -e \"library('Rserve')\""  # [win]
 
 about:
@@ -60,3 +66,19 @@ extra:
   recipe-maintainers:
     - conda-forge/r
     - croth1
+
+# Package: Rserve
+# Version: 1.7-3.1
+# Title: Binary R server
+# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Depends: R (>= 1.5.0)
+# Suggests: RSclient
+# SystemRequirements: libR, GNU make
+# Description: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests to be sent to R. Every connection has a separate workspace and working directory. Client-side implementations are available for popular languages such as C/C++ and Java, allowing any application to use facilities of R without the need of linking to R code. Rserve supports remote connection, user authentication and file transfer. A simple R client is included in this package as well.
+# License: GPL-2 | file LICENSE
+# URL: http://www.rforge.net/Rserve/
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2019-04-15 16:53:44 UTC
+# Packaged: 2019-03-14 18:24:52 UTC; ripley
