@@ -16,7 +16,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
+  number: 1002
   rpaths:
     - lib/R/lib/
     - lib/
@@ -33,9 +33,11 @@ requirements:
   host:
     - r-base
     - libiconv             # [osx]
+    - libblas              # [linux]
   run:
     - r-base
     - libiconv             # [osx]
+    - libblas              # [linux]
 
 test:
   commands:
@@ -56,4 +58,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - croth1
