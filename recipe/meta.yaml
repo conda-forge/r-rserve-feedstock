@@ -1,4 +1,4 @@
-{% set version = '1.7-3.1' %}
+{% set version = '1.8-3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,13 +8,12 @@ package:
 
 source:
   url:
-    - {{ cran_mirror }}/src/contrib/Rserve_{{ version }}.tar.gz
-    - {{ cran_mirror }}/src/contrib/Archive/Rserve/Rserve_{{ version }}.tar.gz
-  sha256: 3ba1e919706e16a8632def5f45d666b6e44eafa6c14b57064d6ddf3415038f99
+    - http://www.rforge.net/Rserve/snapshot/Rserve_{{ version }}.tar.gz
+  sha256: c28f33048e93294fe278ed53058dc2c66584abc1123d3fc8434ee404d01b9115
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
