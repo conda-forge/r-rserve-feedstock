@@ -1,4 +1,4 @@
-{% set version = '1.7-3.1' %}
+{% set version = '1.8-6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,14 +7,12 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  url:
-    - {{ cran_mirror }}/src/contrib/Rserve_{{ version }}.tar.gz
-    - {{ cran_mirror }}/src/contrib/Archive/Rserve/Rserve_{{ version }}.tar.gz
-  sha256: 3ba1e919706e16a8632def5f45d666b6e44eafa6c14b57064d6ddf3415038f99
+  url: http://www.rforge.net/Rserve/snapshot/Rserve_{{ version }}.tar.gz
+  sha256: 173d49eba54c5f0c23a6b08763f5813b92cbd7859c079707759c6e1751df3d7c
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -39,11 +37,13 @@ requirements:
     - r-base
     - libiconv                   # [osx]
     - libblas                    # [linux]
+    - openssl
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - libiconv                   # [osx]
     - libblas                    # [linux]
+    - openssl
 
 test:
   commands:
@@ -52,7 +52,7 @@ test:
 
 about:
   home: http://www.rforge.net/Rserve/
-  license: GPL-2
+  license: GPL-2.0-only
   summary: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests
     to be sent to R. Every connection has a separate workspace and working directory.
     Client-side implementations are available for popular languages such as C/C++ and

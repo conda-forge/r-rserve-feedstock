@@ -6,8 +6,6 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-cran_mirror:
-- https://cran.r-project.org
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -16,9 +14,15 @@ docker_image:
 - condaforge/linux-anvil-comp7
 libblas:
 - 3.8 *netlib
+openssl:
+- 1.1.1
 pin_run_as_build:
+  openssl:
+    max_pin: x.x.x
   r-base:
     min_pin: x.x
     max_pin: x.x
 r_base:
-- '3.6'
+- '4.0'
+target_platform:
+- linux-64
