@@ -37,11 +37,13 @@ requirements:
     - r-base
     - libiconv                   # [osx]
     - libblas                    # [linux]
+    - openssl
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - libiconv                   # [osx]
     - libblas                    # [linux]
+    - openssl
 
 test:
   commands:
