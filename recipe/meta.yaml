@@ -1,4 +1,4 @@
-{% set version = '1.8-3' %}
+{% set version = '1.8-6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,9 +7,8 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  url:
-    - http://www.rforge.net/Rserve/snapshot/Rserve_{{ version }}.tar.gz
-  sha256: c28f33048e93294fe278ed53058dc2c66584abc1123d3fc8434ee404d01b9115
+  url: http://www.rforge.net/Rserve/snapshot/Rserve_{{ version }}.tar.gz
+  sha256: 173d49eba54c5f0c23a6b08763f5813b92cbd7859c079707759c6e1751df3d7c
 
 build:
   merge_build_host: True  # [win]
