@@ -8,11 +8,17 @@ jobs:
     vmImage: vs2017-win2016
   strategy:
     matrix:
-      win_64_r_base4.0:
-        CONFIG: win_64_r_base4.0
+      win_64_openssl1.1.1r_base4.0:
+        CONFIG: win_64_openssl1.1.1r_base4.0
         UPLOAD_PACKAGES: 'True'
-      win_64_r_base4.1:
-        CONFIG: win_64_r_base4.1
+      win_64_openssl1.1.1r_base4.1:
+        CONFIG: win_64_openssl1.1.1r_base4.1
+        UPLOAD_PACKAGES: 'True'
+      win_64_openssl3r_base4.0:
+        CONFIG: win_64_openssl3r_base4.0
+        UPLOAD_PACKAGES: 'True'
+      win_64_openssl3r_base4.1:
+        CONFIG: win_64_openssl3r_base4.1
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
@@ -89,7 +95,7 @@ jobs:
 
     - script: |
         call activate base
-        conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml
+        conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables
       displayName: Build recipe
       env:
         PYTHONUNBUFFERED: 1
