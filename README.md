@@ -1,11 +1,11 @@
-About r-rserve
-==============
+About r-rserve-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rserve-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.rforge.net/Rserve/
 
 Package license: GPL-2.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rserve-feedstock/blob/main/LICENSE.txt)
 
 Summary: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests to be sent to R. Every connection has a separate workspace and working directory. Client-side implementations are available for popular languages such as C/C++ and Java, allowing any application to use facilities of R without the need of linking to R code. Rserve supports remote connection, user authentication and file transfer. A simple R client is included in this package as well.
 
@@ -27,73 +27,38 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_openssl1.1.1r_base4.1</td>
+              <td>linux_64_r_base4.2</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl1.1.1r_base4.1" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_r_base4.2" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_openssl1.1.1r_base4.2</td>
+              <td>linux_64_r_base4.3</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl1.1.1r_base4.2" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_r_base4.3" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_openssl3r_base4.1</td>
+              <td>osx_64_r_base4.2</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl3r_base4.1" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_r_base4.2" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_openssl3r_base4.2</td>
+              <td>osx_64_r_base4.3</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl3r_base4.2" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_r_base4.3" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_openssl1.1.1r_base4.1</td>
+              <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl1.1.1r_base4.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl1.1.1r_base4.2</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl1.1.1r_base4.2" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl3r_base4.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl3r_base4.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl3r_base4.2</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl3r_base4.2" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_openssl1.1.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=win&configuration=win_64_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5775&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=win&configuration=win_64_openssl3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-rserve-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
