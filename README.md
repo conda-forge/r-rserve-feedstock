@@ -7,20 +7,24 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rserve-feedst
 About r-rserve
 --------------
 
-Home: http://www.rforge.net/Rserve/
+Home: https://www.rforge.net/Rserve/
 
 Package license: GPL-2.0-only
 
 Summary: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests to be sent to R. Every connection has a separate workspace and working directory. Client-side implementations are available for popular languages such as C/C++ and Java, allowing any application to use facilities of R without the need of linking to R code. Rserve supports remote connection, user authentication and file transfer. A simple R client is included in this package as well.
+
+Development: https://github.com/s-u/Rserve
 
 About r-rserve
 --------------
 
-Home: http://www.rforge.net/Rserve/
+Home: https://www.rforge.net/Rserve/
 
 Package license: GPL-2.0-only
 
 Summary: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests to be sent to R. Every connection has a separate workspace and working directory. Client-side implementations are available for popular languages such as C/C++ and Java, allowing any application to use facilities of R without the need of linking to R code. Rserve supports remote connection, user authentication and file transfer. A simple R client is included in this package as well.
+
+Development: https://github.com/s-u/Rserve
 
 Current build status
 ====================
