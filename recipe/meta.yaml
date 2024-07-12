@@ -1,28 +1,31 @@
-{% set version = '1.8-7' %}
+{% set version = '1.8-14' %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rserve
   version: {{ version|replace("-", "_") }}
 
 source:
-  url: http://www.rforge.net/Rserve/snapshot/Rserve_{{ version }}.tar.gz
-  sha256: cf3923f32b1b548000d68c35840bc9a9a2a7c43a5543b273cd714d1cc24938c0
+  url: 
+    - https://www.rforge.net/src/contrib/Rserve_{{ version }}.tar.gz
+    - https://www.rforge.net/Rserve/snapshot/Rserve_{{ version }}.tar.gz
+  sha256: 826088032e1c9fef751d01c634945be9e4db914f89b41638f09e996618f177da
 
 build:
-  merge_build_host: True  # [win]
-  number: 3
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -35,15 +38,11 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - libiconv                   # [osx]
-    - libblas                    # [linux]
+    - libblas                      # [linux]
+    - libxcrypt                    # [linux]
     - openssl
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
-    - libiconv                   # [osx]
-    - libblas                    # [linux]
-    - openssl
 
 test:
   commands:
@@ -51,7 +50,8 @@ test:
     - "\"%R%\" -e \"library('Rserve')\""  # [win]
 
 about:
-  home: http://www.rforge.net/Rserve/
+  home: https://www.rforge.net/Rserve/
+  dev_url: https://github.com/s-u/Rserve
   license: GPL-2.0-only
   summary: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests
     to be sent to R. Every connection has a separate workspace and working directory.
@@ -60,25 +60,11 @@ about:
     to R code. Rserve supports remote connection, user authentication and file transfer.
     A simple R client is included in this package as well.
   license_family: GPL2
-  license_file: LICENSE
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - LICENSE
 
 extra:
   recipe-maintainers:
     - conda-forge/r
     - croth1
-
-# Package: Rserve
-# Version: 1.7-3.1
-# Title: Binary R server
-# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
-# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
-# Depends: R (>= 1.5.0)
-# Suggests: RSclient
-# SystemRequirements: libR, GNU make
-# Description: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests to be sent to R. Every connection has a separate workspace and working directory. Client-side implementations are available for popular languages such as C/C++ and Java, allowing any application to use facilities of R without the need of linking to R code. Rserve supports remote connection, user authentication and file transfer. A simple R client is included in this package as well.
-# License: GPL-2 | file LICENSE
-# URL: http://www.rforge.net/Rserve/
-# NeedsCompilation: yes
-# Repository: CRAN
-# Date/Publication: 2019-04-15 16:53:44 UTC
-# Packaged: 2019-03-14 18:24:52 UTC; ripley
