@@ -17,12 +17,12 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ stdlib("c") }}                # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ stdlib("m2w64_c") }}          # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -35,14 +35,12 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - libiconv                   # [osx]
-    - libblas                    # [linux]
+    - libiconv                     # [osx]
+    - libblas
+    - libxcrypt
     - openssl
   run:
     - r-base
-    - libiconv                   # [osx]
-    - libblas                    # [linux]
-    - openssl
 
 test:
   commands:
@@ -59,7 +57,9 @@ about:
     to R code. Rserve supports remote connection, user authentication and file transfer.
     A simple R client is included in this package as well.
   license_family: GPL2
-  license_file: LICENSE
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - LICENSE
 
 extra:
   recipe-maintainers:
