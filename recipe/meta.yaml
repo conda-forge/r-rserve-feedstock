@@ -35,9 +35,8 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - libiconv                     # [osx]
-    - libblas
-    - libxcrypt
+    - libblas                      # [linux]
+    - libxcrypt                    # [linux]
     - openssl
   run:
     - r-base
